@@ -1,0 +1,29 @@
+---
+title: "NBA Bubble"
+author: "Juan Carlos Inclán"
+date: "2/9/2020"
+output: ioslides_presentation
+---
+
+## September 2, 2020
+```{r, echo=FALSE}
+library(leaflet)
+
+NBAicon <- makeIcon(
+  iconUrl = "http://logos-download.com/wp-content/uploads/2017/10/NBA_logo.png",
+  iconWidth = 36, iconHeight = 32,
+  iconAnchorX = 16, iconAnchorY = 16,
+  )
+
+NBALatLong<-data.frame(
+  lat=c(28.361823, 28.4114, 28.3707, 28.3356),
+lng=c(-81.573023, -81.5868,-81.5587, -81.5536))
+
+
+NBAteams<-c("Top 4 teams lodgment-East & West","5 through 8 teams lodgment-East & West","9 through 11 lodgment-East & West", "The Arena")
+
+  NBALatLong %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(icon=NBAicon, popup=NBAteams, clusterOptions = markerClusterOptions())
+```
